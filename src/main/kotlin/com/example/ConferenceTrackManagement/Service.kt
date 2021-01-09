@@ -48,7 +48,6 @@ fun assignTalks(talks: MutableList<TalkAndTimes>): MutableList<Track> {
 fun parseTime(tracks: MutableList<Track>): String {
     var result = ""
     for (index in tracks.indices) {
-//        println("Track ${index + 1}:")
         result += "Track ${index + 1}:\n"
         var hour: Int
         var minute: Int
@@ -60,9 +59,7 @@ fun parseTime(tracks: MutableList<Track>): String {
             minute = (morningTimeConsumed - talkAndTimes.times) % 60
             val time = String.format("%02d:%02d", morningStartTime + hour, minute)
             result += "${time}AM ${talkAndTimes.talk}\n"
-//            println(result)
         }
-//        println("12:00PM Lunch")
         result += "12:00PM Lunch\n"
         var afternoonTimeConsumed = 0
         val afternoonStartTime = 1
@@ -72,19 +69,15 @@ fun parseTime(tracks: MutableList<Track>): String {
             minute = (afternoonTimeConsumed - talkAndTimes.times) % 60
             val time = String.format("%02d:%02d", afternoonStartTime + hour, minute)
             result += "${time}PM ${talkAndTimes.talk}\n"
-//            println(result)
         }
         if (afternoonTimeConsumed <= 180) {
             result += "04:00PM Networking Event"
-//            println("04:00PM Networking Event")
         } else {
             result += "05:00PM Networking Event"
-//            println("05:00PM Networking Event")
         }
         if (index != tracks.size - 1) {
             result += "\n\n"
         }
-//        println("\n")
     }
     return result
 }
